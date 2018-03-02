@@ -1,0 +1,58 @@
+[core]
+	editor = nano
+[user]
+	email = jlam@opentable.com
+[diff]
+  renames = copies
+	tool = bc3
+
+[difftool]
+  prompt = false
+  keepBackup = false
+  tool = bc3
+
+[merge]
+  tool = bc3
+
+[mergetool]
+  bc3=trustExitCode
+  keepBackup=false
+  tool = bc3
+
+[help]
+	autocorrect = -1
+[log]
+	relative
+[alias]
+  bn = "!git rev-parse --abbrev-ref HEAD"
+  pub = "!git push -u origin $(git bn)"
+  pr = pull --rebase
+  fetchp = fetch --prune
+  cm = commit -m
+  cma = commit -am
+  co = checkout
+  com = checkout master
+  cob = checkout -b
+  new = log master.. --reverse
+  ca = commit --amend -C HEAD
+  rbc = rebase --continue
+  rba = rebase --abort
+  wip = !git add . && git commit -m WIP
+  rom = rebase origin/master
+  romi = rebase origin/master --interactive --autosquash
+  d = diff
+  ds = diff --staged
+  pff = pull --ff-only
+  rmx = "!sh -c 'git ls-files --deleted -z $1 | xargs -0 git rm' -"
+  pushf = push --force-with-lease
+  br = branch
+  st = status
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[difftool "bc3"]
+	trustExitCode = true
+[mergetool "bc3"]
+	trustExitCode = true
+[remote "origin"]
+	prune = true
